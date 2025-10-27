@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My GitHub Page</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; max-width: 760px; margin: 3rem auto; padding: 0 1rem; }
+      a { text-decoration: none; }
+      header { margin-bottom: 1.5rem; }
+      nav a { margin-right: .75rem; }
+      footer { margin-top: 3rem; font-size: .9rem; opacity: .7; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Hello, world 👋</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <p>This page is hosted with <strong>GitHub Pages</strong>.</p>
+      <h2 id="about">About me</h2>
+      <p>Write a short bio here.</p>
+    </main>
+
+    <footer>© <span id="year"></span> Your Name</footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
