@@ -1,7 +1,9 @@
 # Project Context - Personal Website
 
 ## Reference Website
-- **URL**: https://natassha.github.io/natasshaselvaraj/?utm_source=chatgpt.com
+- **URL1**: https://natassha.github.io/natasshaselvaraj/?utm_source=chatgpt.com
+- **URL2**: https://www.lyndseyscott.com/#modeling
+- **URL2**: https://mattw.art/
 - **Key Features**: Interactive pictures, nicely formatted characters, modern portfolio design
 
 ## Project Goal
