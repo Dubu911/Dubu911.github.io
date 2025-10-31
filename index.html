@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio - EECS & Art</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -12,7 +16,7 @@
       }
 
       body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: #333;
         line-height: 1.6;
       }
@@ -37,7 +41,16 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 2rem;
+      }
+
+      .nav-container > * {
+        flex: 0 0 auto;
+      }
+
+      .nav-links {
+        flex: 1;
+        justify-content: center;
       }
 
       .nav-links {
@@ -49,8 +62,9 @@
       .nav-links a {
         text-decoration: none;
         color: #333;
-        font-weight: 500;
-        font-size: 1rem;
+        font-family: 'Caveat', cursive;
+        font-weight: 600;
+        font-size: 1.4rem;
         transition: color 0.3s ease;
       }
 
@@ -60,26 +74,35 @@
 
       .social-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
+        align-items: center;
       }
 
       .social-links a {
         text-decoration: none;
         color: #333;
-        font-size: 1.2rem;
-        transition: color 0.3s ease, transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0.8;
       }
 
       .social-links a:hover {
-        color: #667eea;
+        opacity: 1;
         transform: translateY(-2px);
+      }
+
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
       }
 
       /* Hero/Banner Section */
       .hero {
         position: relative;
-        height: 100vh;
-        min-height: 600px;
+        height: 90vh;
+        min-height: 540px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -89,10 +112,10 @@
 
       .carousel {
         position: absolute;
-        top: 0;
+        top: 5%;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 90%;
       }
 
       .carousel-slide {
@@ -113,8 +136,18 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.6;
-        filter: brightness(0.8);
+        filter: brightness(0.6);
+      }
+
+      .carousel-slide::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        pointer-events: none;
       }
 
       .hero-content {
@@ -127,17 +160,20 @@
       }
 
       .hero-content h1 {
-        font-size: 60px;
-        font-weight: bold;
+        font-family: 'Caveat', cursive;
+        font-size: 64px;
+        font-weight: 700;
         margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
         animation: fadeInUp 1s ease-out;
       }
 
       .hero-content p {
-        font-size: 24px;
-        font-family: 'Georgia', serif;
-        font-style: italic;
+        font-family: 'Caveat', cursive;
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         animation: fadeInUp 1s ease-out 0.3s backwards;
       }
@@ -205,10 +241,103 @@
           padding: 0.5rem 1rem;
           font-size: 1.5rem;
         }
+
+        #about {
+          flex-direction: column;
+          gap: 2rem;
+          padding: 4rem 2rem;
+        }
+
+        .about-image {
+          flex: 0 0 auto;
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .about-content h2 {
+          font-size: 36px;
+        }
+      }
+
+      /* About Section */
+      #about {
+        min-height: 100vh;
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .about-image {
+        flex: 0 0 350px;
+        width: 350px;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-content {
+        flex: 1;
+      }
+
+      .about-content h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: #333;
+      }
+
+      .about-content p {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-content ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 1.5rem 0;
+      }
+
+      .about-content ul li {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+        padding-left: 1.5rem;
+        position: relative;
+        margin-bottom: 0.8rem;
+      }
+
+      .about-content ul li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .keywords {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #777;
+        font-style: italic;
       }
 
       /* Placeholder section for development */
-      section {
+      section:not(#about):not(#home) {
         min-height: 100vh;
         padding: 4rem 2rem;
         max-width: 1200px;
@@ -220,16 +349,27 @@
     <!-- Navigation Bar -->
     <nav>
       <div class="nav-container">
+        <div style="width: 100px;"></div> <!-- Spacer for balance -->
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#gallery">Art Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="social-links">
-          <a href="https://github.com/yourusername" target="_blank" title="GitHub">🔗</a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">💼</a>
-          <a href="#" target="_blank" title="Email">✉️</a>
+          <a href="https://github.com/Dubu911" target="_blank" title="GitHub">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+          </a>
+          <a href="https://www.linkedin.com/in/daeyoungdubu" target="_blank" title="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+          </a>
+          <a href="mailto:daeyoungkim@berkeley.edu" title="Email">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
     </nav>
@@ -238,32 +378,64 @@
     <section id="home" class="hero">
       <div class="carousel">
         <div class="carousel-slide active">
-          <img src="images/slide1.jpg" alt="Portfolio Image 1" />
+          <img src="images/selfies/slide1.jpg" alt="Daeyoung - Welcome" />
         </div>
         <div class="carousel-slide">
-          <img src="images/slide2.jpg" alt="Portfolio Image 2" />
+          <img src="images/selfies/slide2.jpg" alt="Daeyoung - Artist Background" />
         </div>
         <div class="carousel-slide">
-          <img src="images/slide3.jpg" alt="Portfolio Image 3" />
+          <img src="images/selfies/slide3.jpg" alt="Daeyoung - Developer Journey" />
+        </div>
+        <div class="carousel-slide">
+          <img src="images/selfies/slide4.jpg" alt="Daeyoung - Portfolio" />
         </div>
       </div>
 
       <div class="hero-content">
-        <h1>Creative Technologist</h1>
-        <p>Bridging Art and Engineering</p>
+        <h1 id="hero-title">Hi, I'm Daeyoung! I speak two languages: art and code</h1>
+        <p id="hero-subtitle">Welcome to my creative journey</p>
       </div>
 
       <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
       <button class="carousel-control next" onclick="moveSlide(1)">❯</button>
     </section>
 
-    <!-- Placeholder sections (we'll build these later) -->
+    <!-- About Section -->
     <section id="about">
-      <h2>About section - Coming soon</h2>
+      <div class="about-image">
+        <img src="images/selfies/me.jpg" alt="Daeyoung Kim" />
+      </div>
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          I'm Daeyoung, an EECS undergraduate at UC Berkeley with a background as a professional analog artist (watercolor, oil, acrylic, graphite). My research interests are at the intersection of computer graphics and human–computer interaction. I care about systems that make visual creation more expressive, accessible, and efficient.
+        </p>
+        <p>
+          I pivoted from studio art after hands-on experience in a semiconductor fabrication plant, where I became fascinated by the elegance of engineered systems. That perspective, seeing aesthetic and algorithmic beauty as complementary, guides my work.
+        </p>
+        <p>
+          At Berkeley I have built a foundation in algorithms, computer systems, and interactive software. Recently I implemented a watercolor simulation in the Godot engine, wrote a research-style report that cites prior work and explains the algorithms I used, and recorded a short demo showing the tool in use. I am exploring problems such as:
+        </p>
+        <ul>
+          <li>Interactive graphics tools that shorten the path from intent to image (real-time shaders, procedural materials, differentiable pipelines).</li>
+          <li>Creativity support and HCI for artists and designers (interaction techniques, evaluation of authoring workflows, learnability).</li>
+          <li>Computational aesthetics (perceptual metrics, layout and brush simulation, generative methods grounded in user studies).</li>
+        </ul>
+        <p>
+          My goal in graduate study is to design and evaluate tools, interfaces, and rendering and authoring techniques that help people create and communicate visually. I bring the rigor of engineering and the sensibility of a practicing artist. I care about both latency and line quality, both user studies and shader graphs.
+        </p>
+        <div class="keywords">
+          <strong>Keywords:</strong> interactive computer graphics, real-time rendering, creativity support tools, authoring interfaces, perceptual evaluation, generative methods
+        </div>
+      </div>
     </section>
 
     <section id="projects">
       <h2>Projects section - Coming soon</h2>
+    </section>
+
+    <section id="gallery">
+      <h2>Art Gallery - Coming soon</h2>
     </section>
 
     <section id="contact">
@@ -275,21 +447,49 @@
       let currentSlide = 0;
       const slides = document.querySelectorAll('.carousel-slide');
       const totalSlides = slides.length;
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+
+      // Text content for each slide
+      const slideContent = [
+        {
+          title: "Hi, I'm Daeyoung! I speak two languages: art and code",
+          subtitle: "Welcome to where creativity meets technology"
+        },
+        {
+          title: "My first career was bringing visions to life as a professional artist",
+          subtitle: "Visual storytelling through creative expression"
+        },
+        {
+          title: "Now at UC Berkeley, I'm building interactive worlds",
+          subtitle: "Through graphics, HCI, ML, and games"
+        },
+        {
+          title: "Welcome to the intersection of creativity and technology",
+          subtitle: "Explore my journey and projects"
+        }
+      ];
+
+      function updateContent() {
+        heroTitle.textContent = slideContent[currentSlide].title;
+        heroSubtitle.textContent = slideContent[currentSlide].subtitle;
+      }
 
       function showSlide(n) {
         slides[currentSlide].classList.remove('active');
         currentSlide = (n + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
+        updateContent();
       }
 
       function moveSlide(direction) {
         showSlide(currentSlide + direction);
       }
 
-      // Auto-advance carousel every 5 seconds
+      // Auto-advance carousel every 6 seconds
       setInterval(() => {
         moveSlide(1);
-      }, 5000);
+      }, 6000);
     </script>
   </body>
 </html>
