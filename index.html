@@ -407,12 +407,211 @@
         font-style: italic;
       }
 
+      /* Projects Section */
+      #projects {
+        min-height: 100vh;
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      #projects h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: #333;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
+
+      .project-card {
+        cursor: pointer;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        background: #f5f5f5;
+      }
+
+      .project-card-content {
+        padding: 2rem;
+      }
+
+      .project-card h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .project-card p {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        overflow: auto;
+      }
+
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 2rem;
+        padding: 3rem;
+        border-radius: 16px;
+        max-width: 800px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 2rem;
+        color: #999;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        background: none;
+        border: none;
+        line-height: 1;
+      }
+
+      .modal-close:hover {
+        color: #333;
+      }
+
+      .modal-content h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 52px;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .modal-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .modal-content p {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 2rem 0;
+      }
+
+      .tech-tag {
+        background: #f0f0f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #667eea;
+      }
+
+      .modal-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .modal-links a {
+        padding: 0.75rem 1.5rem;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        transition: background 0.3s ease;
+      }
+
+      .modal-links a:hover {
+        background: #5568d3;
+      }
+
       /* Placeholder section for development */
-      section:not(#about):not(#home) {
+      section:not(#about):not(#home):not(#projects) {
         min-height: 100vh;
         padding: 4rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .modal-content {
+          padding: 2rem;
+          margin: 1rem;
+        }
+
+        .modal-content h2 {
+          font-size: 32px;
+        }
       }
     </style>
   </head>
@@ -515,8 +714,146 @@
     </section>
 
     <section id="projects">
-      <h2>Projects section - Coming soon</h2>
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" onclick="openModal('modal1')">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; height: 300px; background: #2a2a2a; overflow: hidden; border-radius: 12px 12px 0 0;">
+            <img src="Images/projects/painting_demo1.png" alt="Demo 1" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
+            <img src="Images/projects/painting_demo2.png" alt="Demo 2" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
+          </div>
+          <div class="project-card-content">
+            <h3>Watercolor Simulation Tool</h3>
+            <p>GPU-accelerated digital watercolor painting tool built in Godot Engine with realistic fluid dynamics and pigment behavior.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" onclick="openModal('modal2')">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; height: 300px; background: #4a4a4a; overflow: hidden; border-radius: 12px 12px 0 0;">
+            <img src="https://raw.githubusercontent.com/Dubu911/Get_fit_or_quit/main/images/startingPage.png" alt="Starting Page" style="width: 100%; height: 100%; object-fit: contain; transform: translateY(-15%); display: block;" />
+            <img src="https://raw.githubusercontent.com/Dubu911/Get_fit_or_quit/main/images/WinScreen.png" alt="Victory Screen" style="width: 100%; height: 100%; object-fit: contain; transform: translateY(-15%); display: block;" />
+          </div>
+          <div class="project-card-content">
+            <h3>Get Fit or Quit 💪</h3>
+            <p>A health-themed arcade game where you dodge junk food and catch healthy meals to survive 60 seconds.</p>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Project Modals -->
+    <div id="modal1" class="modal" onclick="closeModalOnOutsideClick(event, 'modal1')">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+        <h2>Watercolor Simulation Tool</h2>
+
+        <!-- Project Images (centered and smaller) -->
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; width: 80%;">
+            <img src="Images/projects/diffusion1.png" alt="Diffusion Demo 1" style="width: 100%; border-radius: 8px;" />
+            <img src="Images/projects/diffusion2.png" alt="Diffusion Demo 2" style="width: 100%; border-radius: 8px;" />
+            <img src="Images/projects/diffusion3.png" alt="Diffusion Demo 3" style="width: 100%; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <!-- Description First -->
+        <div style="margin-bottom: 2rem;">
+          <p style="margin-bottom: 1rem; font-size: 16px; line-height: 1.8;">
+            I built this digital watercolor painting tool in Godot Engine to simulate realistic watercolor behavior. It uses GPU compute shaders to handle fluid dynamics in real time.
+          </p>
+          <p style="margin-bottom: 1rem; font-size: 16px; line-height: 1.8;">
+            The simulation implements water flow, pigment transport, deposition, and evaporation. I wrote custom GLSL shaders that run entirely on the GPU, which keeps everything fast and responsive.
+          </p>
+          <p style="font-size: 16px; line-height: 1.8;">
+            The tool supports pressure sensitivity for tablets, lets you adjust physics parameters in real time, and includes features like pigment lifting and wet-on-wet blending that mimic how watercolor actually works on paper.
+          </p>
+        </div>
+
+        <!-- Video and Paper Layout -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <!-- Demo Video on Left -->
+          <div>
+            <p style="font-size: 12px; color: #666; margin-bottom: 0.5rem; font-weight: 500;">Demo Video</p>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+              <iframe
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                src="https://www.youtube.com/embed/lMHWSwNUGhI"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Technical Paper on Right -->
+          <div>
+            <p style="font-size: 12px; color: #666; margin-bottom: 0.5rem; font-weight: 500;">Technical Paper</p>
+            <a href="papers/watercolor_simulation_paper.pdf" target="_blank" style="text-decoration: none; display: block;">
+              <div style="border: 2px solid #ddd; border-radius: 8px; overflow: hidden; background: white; transition: all 0.3s ease; cursor: pointer; height: 100%; position: relative;">
+                <img src="papers/watercolor_paper_thumbnail.png" alt="Paper Thumbnail" style="width: 100%; height: 125%; object-fit: cover; object-position: top;" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="modal-tech">
+          <span class="tech-tag">Godot Engine 4.4</span>
+          <span class="tech-tag">GLSL Compute Shaders</span>
+          <span class="tech-tag">GPU Programming</span>
+          <span class="tech-tag">Fluid Dynamics</span>
+          <span class="tech-tag">Computer Graphics</span>
+          <span class="tech-tag">Physics Simulation</span>
+        </div>
+
+        <div class="modal-links">
+          <a href="https://github.com/Dubu911/Watercolor_simulation" target="_blank">GitHub</a>
+          <a href="https://youtu.be/lMHWSwNUGhI" target="_blank">Watch on YouTube</a>
+          <a href="papers/watercolor_simulation_paper.pdf" download>Download Paper (PDF)</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal" onclick="closeModalOnOutsideClick(event, 'modal2')">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+        <h2>Get Fit or Quit 💪</h2>
+
+        <!-- Game Screenshots (3 images) -->
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; width: 90%;">
+            <img src="https://raw.githubusercontent.com/Dubu911/Get_fit_or_quit/main/images/in_game_screenshot2.png" alt="Gameplay" style="width: 100%; border-radius: 8px;" />
+            <img src="https://raw.githubusercontent.com/Dubu911/Get_fit_or_quit/main/images/WinScreen.png" alt="Win Screen" style="width: 100%; border-radius: 8px;" />
+            <img src="https://raw.githubusercontent.com/Dubu911/Get_fit_or_quit/main/images/DefeatScreen.png" alt="Defeat Screen" style="width: 100%; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div style="margin-bottom: 2rem;">
+          <p style="margin-bottom: 1rem; font-size: 16px; line-height: 1.8;">
+            I built this arcade game during CalHacks as a fun take on health and fitness. The goal is simple: dodge junk food and catch healthy meals to survive 60 seconds while keeping your fitness level above zero.
+          </p>
+          <p style="margin-bottom: 1rem; font-size: 16px; line-height: 1.8;">
+            The game gets progressively harder at 25, 40, and 50 second marks with more falling objects. I added visual feedback where your character actually grows bigger as your fitness decreases, which makes the challenge even more intense.
+          </p>
+          <p style="font-size: 16px; line-height: 1.8;">
+            Built with Python and Pygame, it features simple arrow key controls and a straightforward food system. Healthy foods like salad and chicken boost your fitness by 3%, while junk food like cake and ice cream can damage it by 10-15%. The real challenge is staying fit long enough to win.
+          </p>
+        </div>
+
+        <div class="modal-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pygame</span>
+          <span class="tech-tag">Game Development</span>
+          <span class="tech-tag">CalHacks Project</span>
+        </div>
+
+        <div class="modal-links">
+          <a href="https://github.com/Dubu911/Get_fit_or_quit" target="_blank">GitHub</a>
+          <a href="https://github.com/Dubu911/Get_fit_or_quit#readme" target="_blank">View README</a>
+        </div>
+      </div>
+    </div>
 
     <section id="gallery">
       <h2>Art Gallery - Coming soon</h2>
@@ -590,6 +927,23 @@
       setInterval(() => {
         showNextScene();
       }, 5000);
+
+      // Modal Functions
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      function closeModalOnOutsideClick(event, modalId) {
+        if (event.target.id === modalId) {
+          closeModal(modalId);
+        }
+      }
     </script>
   </body>
 </html>
