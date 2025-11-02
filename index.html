@@ -271,15 +271,86 @@
       }
 
       .about-image {
-        flex: 0 0 350px;
-        width: 350px;
+        flex: 0 0 400px;
+        width: 400px;
+        height: 600px;
+        position: relative;
       }
 
-      .about-image img {
+      .portrait-scene {
+        position: absolute;
         width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .portrait-scene.active {
+        opacity: 1;
+      }
+
+      .portrait-scene img {
+        position: absolute;
+        width: 250px;
         height: auto;
         border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .portrait-scene img:hover {
+        transform: scale(1.05);
+        z-index: 10;
+      }
+
+      /* Scene 1: me1 (largest, top-left), me3 (medium, bottom-right), me4 (smallest, middle) */
+      .scene-1 .portrait-1 {
+        top: 0;
+        left: 0;
+        width: 280px;
+        transform: rotate(-4deg);
+        z-index: 1;
+      }
+
+      .scene-1 .portrait-2 {
+        bottom: 76px;
+        right: 10px;
+        width: 220px;
+        transform: rotate(5deg);
+        z-index: 2;
+      }
+
+      .scene-1 .portrait-3 {
+        top: 70%;
+        left: 19%;
+        transform: rotate(-15deg);
+        width: 160px;
+        z-index: 3;
+      }
+
+      /* Scene 2: me2 (largest, top-right), me5 (medium, bottom-left), me6 (smallest, middle) - MIRRORED */
+      .scene-2 .portrait-1 {
+        top: 0;
+        right: 0;
+        width: 280px;
+        transform: rotate(4deg);
+        z-index: 1;
+      }
+
+      .scene-2 .portrait-2 {
+        bottom: 76px;
+        left: 10px;
+        width: 220px;
+        transform: rotate(-5deg);
+        z-index: 2;
+      }
+
+      .scene-2 .portrait-3 {
+        top: 70%;
+        right: 19%;
+        transform: rotate(15deg);
+        width: 160px;
+        z-index: 3;
       }
 
       .about-content {
@@ -403,29 +474,42 @@
     <!-- About Section -->
     <section id="about">
       <div class="about-image">
-        <img src="Images/selfies/me.JPG" alt="Daeyoung Kim" />
+        <!-- Scene 1: me1 (largest), me3 (medium), me4 (smallest) -->
+        <div class="portrait-scene scene-1 active">
+          <img src="Images/selfies/me1.jpg" alt="Daeyoung portrait 1" class="portrait-1" />
+          <img src="Images/selfies/me3.jpg" alt="Daeyoung portrait 3" class="portrait-2" />
+          <img src="Images/selfies/me4.jpg" alt="Daeyoung portrait 4" class="portrait-3" />
+        </div>
+
+        <!-- Scene 2: me2 (largest), me5 (medium), me6 (smallest) - MIRRORED -->
+        <div class="portrait-scene scene-2">
+          <img src="Images/selfies/me2.jpg" alt="Daeyoung portrait 2" class="portrait-1" />
+          <img src="Images/selfies/me5.jpg" alt="Daeyoung portrait 5" class="portrait-2" />
+          <img src="Images/selfies/me6.jpg" alt="Daeyoung portrait 6" class="portrait-3" />
+        </div>
       </div>
       <div class="about-content">
         <h2>About Me</h2>
         <p>
-          I'm Daeyoung, an EECS undergraduate at UC Berkeley with a background as a professional analog artist (watercolor, oil, acrylic, graphite). My research interests are at the intersection of computer graphics and human–computer interaction. I care about systems that make visual creation more expressive, accessible, and efficient.
+          I'm Daeyoung, an EECS undergraduate at UC Berkeley with a background as a professional analog artist (watercolor, oil, acrylic, graphite). My interests lie at the intersection of computer graphics and human–computer interaction, where I explore systems that make visual creation more expressive, accessible, and efficient.
         </p>
         <p>
           I pivoted from studio art after hands-on experience in a semiconductor fabrication plant, where I became fascinated by the elegance of engineered systems. That perspective, seeing aesthetic and algorithmic beauty as complementary, guides my work.
         </p>
         <p>
-          At Berkeley I have built a foundation in algorithms, computer systems, and interactive software. Recently I implemented a watercolor simulation in the Godot engine, wrote a research-style report that cites prior work and explains the algorithms I used, and recorded a short demo showing the tool in use. I am exploring problems such as:
+          At Berkeley I've built a foundation in algorithms, computer systems, and interactive software. I develop tools and experiences across creative and technical domains:
         </p>
         <ul>
-          <li>Interactive graphics tools that shorten the path from intent to image (real-time shaders, procedural materials, differentiable pipelines).</li>
-          <li>Creativity support and HCI for artists and designers (interaction techniques, evaluation of authoring workflows, learnability).</li>
-          <li>Computational aesthetics (perceptual metrics, layout and brush simulation, generative methods grounded in user studies).</li>
+          <li>Interactive graphics tools and authoring systems (real-time shaders, procedural materials, visual workflows)</li>
+          <li>Creative software for artists and designers (interaction design, workflow optimization, intuitive interfaces)</li>
+          <li>Computational aesthetics and visual simulations (perceptual systems, artistic rendering, generative methods)</li>
+          <li>Exploratory projects that capture my curiosity (game development, data visualization, predictive modeling)</li>
         </ul>
         <p>
-          My goal in graduate study is to design and evaluate tools, interfaces, and rendering and authoring techniques that help people create and communicate visually. I bring the rigor of engineering and the sensibility of a practicing artist. I care about both latency and line quality, both user studies and shader graphs.
+          I aim to design and build tools, interfaces, and rendering techniques that help people create and communicate visually. I bring the rigor of engineering and the sensibility of a practicing artist. I care about both latency and line quality, both algorithmic efficiency and aesthetic impact.
         </p>
         <div class="keywords">
-          <strong>Keywords:</strong> interactive computer graphics, real-time rendering, creativity support tools, authoring interfaces, perceptual evaluation, generative methods
+          <strong>Keywords:</strong> interactive computer graphics, real-time rendering, creativity support tools, authoring interfaces, perceptual evaluation, machine learning, game development
         </div>
       </div>
     </section>
@@ -490,6 +574,22 @@
       setInterval(() => {
         moveSlide(1);
       }, 6000);
+
+      // Portrait slideshow
+      let currentScene = 0;
+      const scenes = document.querySelectorAll('.portrait-scene');
+      const totalScenes = scenes.length;
+
+      function showNextScene() {
+        scenes[currentScene].classList.remove('active');
+        currentScene = (currentScene + 1) % totalScenes;
+        scenes[currentScene].classList.add('active');
+      }
+
+      // Auto-advance portrait scenes every 5 seconds
+      setInterval(() => {
+        showNextScene();
+      }, 5000);
     </script>
   </body>
 </html>
