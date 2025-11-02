@@ -632,6 +632,13 @@
         justify-content: center;
       }
 
+      .art-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        outline: 3px solid #667eea;
+        outline-offset: -3px;
+      }
+
       .art-card img {
         object-fit: contain;
         display: block;
@@ -1124,8 +1131,55 @@
     </section>
 
     <section id="contact">
-      <h2>Contact section - Coming soon</h2>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; margin-bottom: 2rem; text-align: center; color: #333;">Let's Connect</h2>
+
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 18px; color: #555; margin-bottom: 3rem; line-height: 1.8;">
+          I'm always interested in discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 2rem; align-items: center;">
+          <!-- Email -->
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:daeyoungkim@berkeley.edu" style="font-family: 'Inter', sans-serif; font-size: 20px; color: #333; text-decoration: none; transition: color 0.3s ease;">
+              daeyoungkim@berkeley.edu
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+            <a href="https://github.com/Dubu911" target="_blank" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: #333; transition: transform 0.3s ease;">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 40px; height: 40px;" />
+              <span style="font-family: 'Inter', sans-serif; font-size: 14px;">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/daeyoungdubu" target="_blank" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: #333; transition: transform 0.3s ease;">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 40px; height: 40px;" />
+              <span style="font-family: 'Inter', sans-serif; font-size: 14px;">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Art Modal -->
+    <div id="art-modal" class="modal" onclick="closeModalOnOutsideClick(event, 'art-modal')">
+      <div class="modal-content" style="max-width: 1000px; padding: 3rem;">
+        <button class="modal-close" onclick="closeModal('art-modal')">&times;</button>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+          <img id="art-modal-image" src="" alt="Artwork" style="max-width: 100%; max-height: 70vh; width: auto; height: auto; object-fit: contain; border-radius: 8px;" />
+          <div id="art-modal-info" style="text-align: center; font-family: 'Inter', sans-serif;">
+            <h3 id="art-modal-title" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; margin-bottom: 1rem; color: #333;"></h3>
+            <p id="art-modal-year" style="font-size: 16px; color: #666; margin-bottom: 0.5rem;"></p>
+            <p id="art-modal-medium" style="font-size: 16px; color: #666; margin-bottom: 0.5rem;"></p>
+            <p id="art-modal-dimensions" style="font-size: 16px; color: #666;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScript for Carousel -->
     <script>
@@ -1217,6 +1271,160 @@
         acrylic: 0
       };
 
+      // Artwork metadata
+      const artworkData = {
+        'watercolor1.jpg': {
+          title: 'A Harbor',
+          year: '2010',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'watercolor2.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Watercolor on paper',
+          dimensions: '13.5 × 19.5 inches (34 × 50 cm)'
+        },
+        'watercolor3.jpg': {
+          title: 'Untitled',
+          year: '2010',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'watercolor4.jpg': {
+          title: 'Untitled',
+          year: '2010',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'watercolor5.jpg': {
+          title: 'Untitled',
+          year: '2009',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'watercolor6.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'watercolor7.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Watercolor on paper',
+          dimensions: '13.5 × 19.5 inches (34 × 50 cm)'
+        },
+        'watercolor8.jpg': {
+          title: 'Eun-bi',
+          year: '2015',
+          medium: 'Watercolor and pen on paper',
+          dimensions: '9.75 × 13.5 inches (25 × 34 cm)'
+        },
+        'watercolor9.jpg': {
+          title: 'Untitled',
+          year: '2010',
+          medium: 'Watercolor on paper',
+          dimensions: '19.5 × 27 inches (50 × 68 cm)'
+        },
+        'oil1.jpg': {
+          title: 'Starry Night at the Grand Canyon',
+          year: '2024',
+          medium: 'Oil on canvas',
+          dimensions: '36 × 24 inches'
+        },
+        'oil2.jpg': {
+          title: 'My Hometown',
+          year: '2024',
+          medium: 'Oil on canvas',
+          dimensions: '30 × 24 inches'
+        },
+        'oil3.jpg': {
+          title: 'The UC Berkeley Campanile',
+          year: '2024',
+          medium: 'Oil on canvas',
+          dimensions: '7 × 5 inches'
+        },
+        'graphite1.png': {
+          title: 'Self Portrait',
+          year: '2024',
+          medium: 'Graphite on paper',
+          dimensions: '9 × 12 inches'
+        },
+        'graphite2.jpg': {
+          title: 'My Parents',
+          year: '2024',
+          medium: 'Graphite on paper',
+          dimensions: '9 × 12 inches'
+        },
+        'graphite3.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: '13.5 × 19.5 inches (34 × 50 cm)'
+        },
+        'drawing1.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'drawing2.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'drawing3.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'drawing4.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'drawing5.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'drawing6.jpg': {
+          title: 'Untitled',
+          year: '2011',
+          medium: 'Graphite on paper',
+          dimensions: 'Sketchbook'
+        },
+        'acrylic1.jpg': {
+          title: 'For My Friend',
+          year: '2015',
+          medium: 'Acrylic on canvas',
+          dimensions: '9.75 × 13.5 inches (25 × 34 cm)'
+        },
+        'acrylic2.jpg': {
+          title: 'For My Friend',
+          year: '2015',
+          medium: 'Acrylic on canvas',
+          dimensions: '9.75 × 13.5 inches (25 × 34 cm)'
+        },
+        'acrylic3.jpg': {
+          title: 'For My Friend',
+          year: '2013',
+          medium: 'Acrylic on canvas',
+          dimensions: '9.75 × 13.5 inches (25 × 34 cm)'
+        },
+        'acrylic4.jpg': {
+          title: 'For My Friend',
+          year: '2013',
+          medium: 'Acrylic on canvas',
+          dimensions: '9.75 × 13.5 inches (25 × 34 cm)'
+        }
+      };
+
       // Detect image orientation and apply appropriate class
       document.addEventListener('DOMContentLoaded', function() {
         const artImages = document.querySelectorAll('.art-card img');
@@ -1237,7 +1445,44 @@
             img.onload();
           }
         });
+
+        // Add click handlers to art cards
+        const artCards = document.querySelectorAll('.art-card');
+        artCards.forEach(card => {
+          card.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').src;
+            openArtModal(imgSrc);
+          });
+        });
       });
+
+      function openArtModal(imageSrc) {
+        const modal = document.getElementById('art-modal');
+        const modalImage = document.getElementById('art-modal-image');
+        modalImage.src = imageSrc;
+
+        // Extract filename from src
+        const filename = imageSrc.split('/').pop();
+
+        // Get artwork data
+        const artwork = artworkData[filename];
+
+        if (artwork) {
+          document.getElementById('art-modal-title').textContent = artwork.title;
+          document.getElementById('art-modal-year').textContent = artwork.year;
+          document.getElementById('art-modal-medium').textContent = artwork.medium;
+          document.getElementById('art-modal-dimensions').textContent = artwork.dimensions;
+        } else {
+          // Fallback for artworks without metadata
+          document.getElementById('art-modal-title').textContent = 'Untitled';
+          document.getElementById('art-modal-year').textContent = '';
+          document.getElementById('art-modal-medium').textContent = '';
+          document.getElementById('art-modal-dimensions').textContent = '';
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
 
       function moveCarousel(category, direction) {
         const carousel = document.getElementById(category + '-carousel');
