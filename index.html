@@ -598,6 +598,139 @@
         margin: 0 auto;
       }
 
+      /* Art Gallery Carousel */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+      }
+
+      .cards-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .art-card {
+        position: absolute;
+        max-width: 500px;
+        max-height: 550px;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .art-card img {
+        object-fit: contain;
+        display: block;
+      }
+
+      /* Horizontal images - fixed width */
+      .art-card img.horizontal {
+        width: 500px;
+        height: auto;
+      }
+
+      /* Vertical images - fixed height */
+      .art-card img.vertical {
+        width: auto;
+        height: 550px;
+      }
+
+      /* Center card - largest and in front */
+      .art-card[data-position="0"] {
+        z-index: 10;
+        transform: translateX(0) scale(1);
+        opacity: 1;
+      }
+
+      /* Right side cards */
+      .art-card[data-position="1"] {
+        z-index: 9;
+        transform: translateX(200px) scale(0.85);
+        opacity: 0.7;
+      }
+
+      .art-card[data-position="2"] {
+        z-index: 8;
+        transform: translateX(350px) scale(0.7);
+        opacity: 0.5;
+      }
+
+      /* Left side cards */
+      .art-card[data-position="-1"] {
+        z-index: 9;
+        transform: translateX(-200px) scale(0.85);
+        opacity: 0.7;
+      }
+
+      .art-card[data-position="-2"] {
+        z-index: 8;
+        transform: translateX(-350px) scale(0.7);
+        opacity: 0.5;
+      }
+
+      /* Hidden cards */
+      .art-card[data-position="3"],
+      .art-card[data-position="4"],
+      .art-card[data-position="5"],
+      .art-card[data-position="6"],
+      .art-card[data-position="7"],
+      .art-card[data-position="-3"],
+      .art-card[data-position="-4"],
+      .art-card[data-position="-5"],
+      .art-card[data-position="-6"],
+      .art-card[data-position="-7"] {
+        z-index: 1;
+        transform: translateX(500px) scale(0.5);
+        opacity: 0;
+      }
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        color: #333;
+        font-size: 2rem;
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        z-index: 20;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-btn-left {
+        left: 2rem;
+      }
+
+      .carousel-btn-right {
+        right: 2rem;
+      }
+
       @media (max-width: 768px) {
         .projects-grid {
           grid-template-columns: 1fr;
@@ -856,7 +989,138 @@
     </div>
 
     <section id="gallery">
-      <h2>Art Gallery - Coming soon</h2>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; margin-bottom: 3rem; text-align: center; color: #333;">Art Gallery</h2>
+
+      <!-- Watercolor Section -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; margin-bottom: 2rem; color: #333;">Watercolor</h3>
+
+        <div class="carousel-container">
+          <button class="carousel-btn carousel-btn-left" onclick="moveCarousel('watercolor', -1)">❮</button>
+
+          <div class="cards-wrapper" id="watercolor-carousel">
+            <div class="art-card" data-position="0">
+              <img src="Images/arts/watercolor1.jpg" alt="Watercolor 1" />
+            </div>
+            <div class="art-card" data-position="1">
+              <img src="Images/arts/watercolor2.jpg" alt="Watercolor 2" />
+            </div>
+            <div class="art-card" data-position="2">
+              <img src="Images/arts/watercolor3.jpg" alt="Watercolor 3" />
+            </div>
+            <div class="art-card" data-position="3">
+              <img src="Images/arts/watercolor4.jpg" alt="Watercolor 4" />
+            </div>
+            <div class="art-card" data-position="4">
+              <img src="Images/arts/watercolor5.jpg" alt="Watercolor 5" />
+            </div>
+            <div class="art-card" data-position="5">
+              <img src="Images/arts/watercolor6.jpg" alt="Watercolor 6" />
+            </div>
+            <div class="art-card" data-position="6">
+              <img src="Images/arts/watercolor7.jpg" alt="Watercolor 7" />
+            </div>
+            <div class="art-card" data-position="7">
+              <img src="Images/arts/watercolor8.jpg" alt="Watercolor 8" />
+            </div>
+            <div class="art-card" data-position="8">
+              <img src="Images/arts/watercolor9.jpg" alt="Watercolor 9" />
+            </div>
+          </div>
+
+          <button class="carousel-btn carousel-btn-right" onclick="moveCarousel('watercolor', 1)">❯</button>
+        </div>
+      </div>
+
+      <!-- Oil Section -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; margin-bottom: 2rem; color: #333;">Oil</h3>
+
+        <div class="carousel-container">
+          <button class="carousel-btn carousel-btn-left" onclick="moveCarousel('oil', -1)">❮</button>
+
+          <div class="cards-wrapper" id="oil-carousel">
+            <div class="art-card" data-position="0">
+              <img src="Images/arts/oil1.jpg" alt="Oil 1" />
+            </div>
+            <div class="art-card" data-position="1">
+              <img src="Images/arts/oil2.jpg" alt="Oil 2" />
+            </div>
+            <div class="art-card" data-position="2">
+              <img src="Images/arts/oil3.jpg" alt="Oil 3" />
+            </div>
+          </div>
+
+          <button class="carousel-btn carousel-btn-right" onclick="moveCarousel('oil', 1)">❯</button>
+        </div>
+      </div>
+
+      <!-- Drawings Section -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; margin-bottom: 2rem; color: #333;">Drawings</h3>
+
+        <div class="carousel-container">
+          <button class="carousel-btn carousel-btn-left" onclick="moveCarousel('drawings', -1)">❮</button>
+
+          <div class="cards-wrapper" id="drawings-carousel">
+            <div class="art-card" data-position="0">
+              <img src="Images/arts/graphite1.png" alt="Graphite 1" />
+            </div>
+            <div class="art-card" data-position="1">
+              <img src="Images/arts/graphite2.jpg" alt="Graphite 2" />
+            </div>
+            <div class="art-card" data-position="2">
+              <img src="Images/arts/graphite3.jpg" alt="Graphite 3" />
+            </div>
+            <div class="art-card" data-position="3">
+              <img src="Images/arts/drawing1.jpg" alt="Drawing 1" />
+            </div>
+            <div class="art-card" data-position="4">
+              <img src="Images/arts/drawing2.jpg" alt="Drawing 2" />
+            </div>
+            <div class="art-card" data-position="5">
+              <img src="Images/arts/drawing3.jpg" alt="Drawing 3" />
+            </div>
+            <div class="art-card" data-position="6">
+              <img src="Images/arts/drawing4.jpg" alt="Drawing 4" />
+            </div>
+            <div class="art-card" data-position="7">
+              <img src="Images/arts/drawing5.jpg" alt="Drawing 5" />
+            </div>
+            <div class="art-card" data-position="8">
+              <img src="Images/arts/drawing6.jpg" alt="Drawing 6" />
+            </div>
+          </div>
+
+          <button class="carousel-btn carousel-btn-right" onclick="moveCarousel('drawings', 1)">❯</button>
+        </div>
+      </div>
+
+      <!-- Acrylic Section -->
+      <div style="margin-bottom: 4rem;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; margin-bottom: 2rem; color: #333;">Acrylic</h3>
+
+        <div class="carousel-container">
+          <button class="carousel-btn carousel-btn-left" onclick="moveCarousel('acrylic', -1)">❮</button>
+
+          <div class="cards-wrapper" id="acrylic-carousel">
+            <div class="art-card" data-position="0">
+              <img src="Images/arts/acrylic1.jpg" alt="Acrylic 1" />
+            </div>
+            <div class="art-card" data-position="1">
+              <img src="Images/arts/acrylic2.jpg" alt="Acrylic 2" />
+            </div>
+            <div class="art-card" data-position="2">
+              <img src="Images/arts/acrylic3.jpg" alt="Acrylic 3" />
+            </div>
+            <div class="art-card" data-position="3">
+              <img src="Images/arts/acrylic4.jpg" alt="Acrylic 4" />
+            </div>
+          </div>
+
+          <button class="carousel-btn carousel-btn-right" onclick="moveCarousel('acrylic', 1)">❯</button>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
@@ -943,6 +1207,57 @@
         if (event.target.id === modalId) {
           closeModal(modalId);
         }
+      }
+
+      // Art Gallery Carousel
+      const carouselStates = {
+        watercolor: 0,
+        oil: 0,
+        drawings: 0,
+        acrylic: 0
+      };
+
+      // Detect image orientation and apply appropriate class
+      document.addEventListener('DOMContentLoaded', function() {
+        const artImages = document.querySelectorAll('.art-card img');
+
+        artImages.forEach(img => {
+          img.onload = function() {
+            if (this.naturalWidth > this.naturalHeight) {
+              // Horizontal/landscape
+              this.classList.add('horizontal');
+            } else {
+              // Vertical/portrait
+              this.classList.add('vertical');
+            }
+          };
+
+          // Trigger onload if image is already cached
+          if (img.complete) {
+            img.onload();
+          }
+        });
+      });
+
+      function moveCarousel(category, direction) {
+        const carousel = document.getElementById(category + '-carousel');
+        const cards = carousel.querySelectorAll('.art-card');
+        const totalCards = cards.length;
+
+        // Update current index
+        carouselStates[category] = (carouselStates[category] + direction + totalCards) % totalCards;
+
+        // Update positions for all cards
+        cards.forEach((card, index) => {
+          // Calculate relative position from current center card
+          let position = index - carouselStates[category];
+
+          // Wrap around for circular effect
+          if (position > totalCards / 2) position -= totalCards;
+          if (position < -totalCards / 2) position += totalCards;
+
+          card.setAttribute('data-position', position);
+        });
       }
     </script>
   </body>
