@@ -590,8 +590,83 @@
         background: #5568d3;
       }
 
+      /* Publications Section */
+      #publications {
+        min-height: 60vh;
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #f9f9f9;
+      }
+
+      #publications h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: #333;
+      }
+
+      .publication-item {
+        background: white;
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+        cursor: pointer;
+      }
+
+      .publication-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .publication-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .publication-authors {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+
+      .publication-authors .author-me {
+        font-weight: 600;
+        color: #667eea;
+      }
+
+      .publication-venue {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 0.5rem;
+      }
+
+      .publication-status {
+        display: inline-block;
+        background: #fff3cd;
+        color: #856404;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 1rem;
+      }
+
       /* Placeholder section for development */
-      section:not(#about):not(#home):not(#projects) {
+      section:not(#about):not(#home):not(#projects):not(#publications) {
         min-height: 100vh;
         padding: 4rem 2rem;
         max-width: 1200px;
@@ -763,6 +838,7 @@
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#gallery">Art Gallery</a></li>
           <li><a href="#contact">CV/Resume</a></li>
@@ -851,6 +927,19 @@
         <div class="keywords">
           <strong>Keywords:</strong> interactive computer graphics, real-time rendering, creativity support tools, authoring interfaces, perceptual evaluation, machine learning, game development
         </div>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="publication-item" onclick="openModal('publication-modal-1')">
+        <div class="publication-title">Modeling the Transmission of Visual Culture on TikTok</div>
+        <div class="publication-authors">
+          Samia Menon, <span class="author-me">Daeyoung Kim</span>, Bjoern Hartmann, Marti Hearst
+        </div>
+        <div class="publication-venue">International Conference on Web and Social Media (ICWSM), 2026</div>
+        <span class="publication-status">Under Review</span>
       </div>
     </section>
 
@@ -1195,6 +1284,49 @@
             <p id="art-modal-year" style="font-size: 16px; color: #666; margin-bottom: 0.5rem;"></p>
             <p id="art-modal-medium" style="font-size: 16px; color: #666; margin-bottom: 0.5rem;"></p>
             <p id="art-modal-dimensions" style="font-size: 16px; color: #666;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publication Modal -->
+    <div id="publication-modal-1" class="modal" onclick="closeModalOnOutsideClick(event, 'publication-modal-1')">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('publication-modal-1')">&times;</button>
+        <h2>Modeling the Transmission of Visual Culture on TikTok</h2>
+
+        <div style="margin-bottom: 2rem;">
+          <div class="publication-authors" style="margin-bottom: 1rem;">
+            Samia Menon, <span class="author-me">Daeyoung Kim</span>, Bjoern Hartmann, Marti Hearst
+          </div>
+          <div class="publication-venue" style="margin-bottom: 1rem;">
+            International Conference on Web and Social Media (ICWSM), 2026
+          </div>
+          <span class="publication-status">Under Review</span>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 1rem; color: #333;">Abstract</h3>
+          <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #555; text-align: justify;">
+            Modern social media platforms pose critical challenges for modeling information-spread. While prior work often examines the diffusion of textual content through structured social networks, reflecting the affordances of older platforms, many contemporary platforms privilege visual content delivered through algorithmically-mediated recommendation systems.
+          </p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #555; text-align: justify; margin-top: 1rem;">
+            To model information-spread under these new paradigms, we present a framework that draws on foundational work in diffusion theory to conceptualize the visual trait as the fundamental unit of transmission. We formalize this framework by computationally analyzing visual trait adoption over time within aesthetic communities --- groups of users who participate in a shared set of highly associated visual traits --- on the short-video sharing platform TikTok. We find that adoption patterns are consistent with the logistic model of biased cultural transmission, suggesting that information diffusion on these platforms is driven by social learning. To demonstrate this pattern, we first propose and evaluate a computational method using state-of-the-art vision models for detecting the visual traits encompassed by an aesthetic. We then analyze image data sampled from 42,576 public TikTok videos to determine trait adoption curves. Our analysis reveals that certain traits diffuse at significantly faster rates than others, indicating stronger socio-structural influences promoting adoption. These contributions provide a versatile approach for understanding the propagation of visual culture without access to proprietary algorithms.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 1rem; color: #333;">Keywords</h3>
+          <div class="modal-tech">
+            <span class="tech-tag">Cultural Transmission</span>
+            <span class="tech-tag">TikTok</span>
+            <span class="tech-tag">Algorithmic-Mediation</span>
+            <span class="tech-tag">Visual Media</span>
+            <span class="tech-tag">Information Spread</span>
+            <span class="tech-tag">Online Community</span>
+            <span class="tech-tag">Computational Social Science</span>
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">Diffusion of Innovations</span>
           </div>
         </div>
       </div>
