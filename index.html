@@ -838,7 +838,7 @@
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
-          <!-- <li><a href="#publications">Publications</a></li> -->
+          <li><a href="#publications">Publications</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#gallery">Art Gallery</a></li>
           <li><a href="#contact">CV/Resume</a></li>
@@ -907,35 +907,34 @@
       <div class="about-content">
         <h2>About Me</h2>
         <p>
-          I'm Daeyoung, an EECS undergraduate at UC Berkeley with a background as a professional analog artist (watercolor, oil, acrylic, graphite). My interests lie at the intersection of computer graphics and human–computer interaction, where I explore systems that make visual creation more expressive, accessible, and efficient.
+          I'm Daeyoung, a first-year Computer Science PhD student at the University of Tennessee, Knoxville, and a UC Berkeley EECS graduate. Before studying computing, I worked as a professional watercolor artist and instructor in Korea.
         </p>
         <p>
-          I pivoted from studio art after hands-on experience in a semiconductor fabrication plant, where I became fascinated by the elegance of engineered systems. That perspective, seeing aesthetic and algorithmic beauty as complementary, guides my work.
+          My research interests lie at the intersection of human-computer interaction, learning technologies, and computer graphics. I'm particularly interested in how interactive systems can support human learning, creativity, and skill development without simply replacing the processes through which people develop their expertise.
         </p>
         <p>
-          At Berkeley I've built a foundation in algorithms, computer systems, and interactive software. I develop tools and experiences across creative and technical domains:
+          My background in art and engineering shapes how I approach these questions. I built a real-time digital watercolor simulator using GPU compute shaders, which led me to think about how computational tools change the way people explore, make decisions, and apply their skills. My experience teaching art and tutoring mathematics and computer science also made me interested in how technology can support understanding rather than simply provide answers.
         </p>
-        <ul>
-          <li>Interactive graphics tools and authoring systems (real-time shaders, procedural materials, visual workflows)</li>
-          <li>Creative software for artists and designers (interaction design, workflow optimization, intuitive interfaces)</li>
-          <li>Computational aesthetics and visual simulations (perceptual systems, artistic rendering, generative methods)</li>
-          <li>Exploratory projects that capture my curiosity (game development, data visualization, predictive modeling)</li>
-        </ul>
         <p>
-          I aim to design and build tools, interfaces, and rendering techniques that help people create and communicate visually. I bring the rigor of engineering and the sensibility of a practicing artist. I care about both latency and line quality, both algorithmic efficiency and aesthetic impact.
+          As generative AI becomes more capable, I hope to explore how we can design interactive tools that help people learn and create while preserving opportunities for independent reasoning and exploration.
         </p>
         <div class="keywords">
-          <strong>Keywords:</strong> interactive computer graphics, real-time rendering, creativity support tools, authoring interfaces, perceptual evaluation, machine learning, game development
+          <strong>Research Interests:</strong> Human-Computer Interaction, Computing Education, Human-AI Interaction, Creativity Support Tools, Computer Graphics
         </div>
       </div>
     </section>
 
-    <!-- Publications Section (hidden - re-enable nav link above and add entries here when ready) -->
-    <!--
+    <!-- Publications Section -->
     <section id="publications">
       <h2>Publications</h2>
+      <div class="publication-item" onclick="openModal('publication-modal-1')">
+        <div class="publication-title">Modeling the Transmission of Visual Culture on TikTok</div>
+        <div class="publication-authors">
+          Samia Menon, <span class="author-me">Daeyoung Kim</span>, Bjoern Hartmann, Marti Hearst
+        </div>
+        <span class="publication-status">Manuscript in preparation</span>
+      </div>
     </section>
-    -->
 
     <section id="projects">
       <h2>Projects</h2>
@@ -1283,7 +1282,7 @@
       </div>
     </div>
 
-    <!-- Publication Modal (hidden along with Publications section above)
+    <!-- Publication Modal -->
     <div id="publication-modal-1" class="modal" onclick="closeModalOnOutsideClick(event, 'publication-modal-1')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('publication-modal-1')">&times;</button>
@@ -1293,19 +1292,13 @@
           <div class="publication-authors" style="margin-bottom: 1rem;">
             Samia Menon, <span class="author-me">Daeyoung Kim</span>, Bjoern Hartmann, Marti Hearst
           </div>
-          <div class="publication-venue" style="margin-bottom: 1rem;">
-            International Conference on Web and Social Media (ICWSM), 2026
-          </div>
-          <span class="publication-status">Under Review</span>
+          <span class="publication-status">Manuscript in preparation</span>
         </div>
 
         <div style="margin-bottom: 2rem;">
-          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 1rem; color: #333;">Abstract</h3>
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 1rem; color: #333;">Overview</h3>
           <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #555; text-align: justify;">
-            Modern social media platforms pose critical challenges for modeling information-spread. While prior work often examines the diffusion of textual content through structured social networks, reflecting the affordances of older platforms, many contemporary platforms privilege visual content delivered through algorithmically-mediated recommendation systems.
-          </p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #555; text-align: justify; margin-top: 1rem;">
-            To model information-spread under these new paradigms, we present a framework that draws on foundational work in diffusion theory to conceptualize the visual trait as the fundamental unit of transmission. We formalize this framework by computationally analyzing visual trait adoption over time within aesthetic communities --- groups of users who participate in a shared set of highly associated visual traits --- on the short-video sharing platform TikTok. We find that adoption patterns are consistent with the logistic model of biased cultural transmission, suggesting that information diffusion on these platforms is driven by social learning. To demonstrate this pattern, we first propose and evaluate a computational method using state-of-the-art vision models for detecting the visual traits encompassed by an aesthetic. We then analyze image data sampled from 42,576 public TikTok videos to determine trait adoption curves. Our analysis reveals that certain traits diffuse at significantly faster rates than others, indicating stronger socio-structural influences promoting adoption. These contributions provide a versatile approach for understanding the propagation of visual culture without access to proprietary algorithms.
+            Many of today's social media platforms center on visual content delivered by recommendation algorithms rather than by social networks. This project studies how visual culture spreads on TikTok, drawing on diffusion theory and computer vision to understand how aesthetic trends propagate across online communities.
           </p>
         </div>
 
@@ -1325,7 +1318,6 @@
         </div>
       </div>
     </div>
-    -->
 
     <!-- JavaScript for Carousel -->
     <script>
